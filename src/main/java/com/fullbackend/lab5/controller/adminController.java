@@ -8,46 +8,46 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/api")
 public class adminController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping
+    @GetMapping("/products")
     public List<Product> findAll() {
         return productService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/products/{id}")
     public Product findById (@PathVariable Long id) {
         return productService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/products")
     @ResponseStatus(HttpStatus.CREATED)
     public void create (@RequestBody Product product) {
         productService.create(product);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/products/{id}")
     public void update (@PathVariable Long id, @RequestBody Product product) {
         productService.update(id, product);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/products/{id}")
     public void delete (@PathVariable Long id) {
         productService.delete(id);
     }
 
-    @GetMapping("greaterThan")
+    @GetMapping("/products/greaterThan")
     public List<Product> getGreaterThan(@RequestParam double price) {
         return productService.getGreaterThan(price);
     }
 
-    @GetMapping("lowerThan")
+    @GetMapping("/products/lowerThan")
     public List<Product> getLowerThan(@RequestParam double price) {
         return productService.getLowerThan(price);
     }

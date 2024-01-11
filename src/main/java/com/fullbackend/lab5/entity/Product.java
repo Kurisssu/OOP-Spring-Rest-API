@@ -2,6 +2,7 @@ package com.fullbackend.lab5.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
