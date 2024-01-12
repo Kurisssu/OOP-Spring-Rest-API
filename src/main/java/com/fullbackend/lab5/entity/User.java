@@ -6,42 +6,37 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
-@Table(name = "Product")
-public class Product {
+@Table(name = "UserTable")
+public class User {
     @Getter @Setter
     private Long id;
     @Getter @Setter
     private String name;
     @Getter @Setter
-    private String manufacturer; // producer, maker
-    @Getter @Setter
-    private Double price;
+    private String email;
 
-    private List<Product> product;
+    private List<User> user;
 
-    public Product(Long id, String name, String manufacturer, Double price) {
+    public User(Long id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.manufacturer = manufacturer;
-        this.price = price;
+        this.email = email;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "User{" +
                 "id =" + id +
                 ", name ='" + name + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", price ='" + price + '\'' +
+                ", email ='" + email + '\'' +
                 '}';
     }
 }
